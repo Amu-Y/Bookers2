@@ -1,0 +1,28 @@
+
+<div id = "notice">
+ <%= flash[:notice] %>
+</div>
+  <h2>User info</h2>
+
+<tbody>
+<div><%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></div>
+  <h4>name</h4>
+    <div class="profile-container">
+      <h4 class="profile-name"><%= user.name %></h4>
+    <h4>introduction</h4>
+    <div></div>
+        <div>
+          <% if user.id == current_user.id %>
+            <p><%= link_to "プロフィール編集", edit_user_path(user) %></p>
+          <% end %>
+        </div>
+</tbody>
+
+   <h2>New book</h2>
+   <%= form_with model:book, local:true do |f| %>
+    <p>Title</p>
+     <%= f.text_field :title %>
+    <p>Opinion</p>
+     <%= f.text_area :body %>
+     <div><%= f.submit 'Create Book' %></div>
+   <% end %>
