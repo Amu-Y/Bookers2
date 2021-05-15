@@ -5,17 +5,17 @@
   <h2>User info</h2>
 
 <tbody>
-<div><%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></div>
-  <h4>name</h4>
-    <div class="profile-container">
-      <h4 class="profile-name"><%= user.name %></h4>
-    <h4>introduction</h4>
-    <div></div>
-        <div>
-          <% if user.id == current_user.id %>
-            <p><%= link_to "プロフィール編集", edit_user_path(user) %></p>
-          <% end %>
-        </div>
+<% if user.id == current_user.id %>
+    <div><%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></div>
+      <h4>name</h4>
+        <div class="profile-container">
+          <h4 class="profile-name"><%= user.name %></h4>
+        <h4>introduction</h4>
+        <div><% user.introduction %></div>
+            <div>
+                <p><%= link_to "プロフィール編集", edit_user_path(user) %></p>
+            </div>
+<% end %>
 </tbody>
 
    <h2>New book</h2>
