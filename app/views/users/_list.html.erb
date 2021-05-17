@@ -1,28 +1,38 @@
-
-<div id = "notice">
- <%= flash[:notice] %>
-</div>
   <h2>User info</h2>
+        <div class="attachment user profile_image fallback">
+          <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+        </div>
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>name</th>
+          <th class="profile-name"><%= user.name %></th>
+        </tr>
+        <tr>
+          <th>introduction</th>
+          <th><%= user.introduction %></th>
+        </tr>
+      </tbody>
+    </table>
+        <div class="row">
+          <p class="btn btn-outline-secondary btn-block">
+          <%= link_to edit_user_path(user) do  %>
+            <i class="fas fa-user-cog text-secondary"></i>
+          <% end %></p>
+        </div>
 
-<tbody>
-<% if user.id == current_user.id %>
-    <div><%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></div>
-      <h4>name</h4>
-        <div class="profile-container">
-          <h4 class="profile-name"><%= user.name %></h4>
-        <h4>introduction</h4>
-        <div><% user.introduction %></div>
-            <div>
-                <p><%= link_to "プロフィール編集", edit_user_path(user) %></p>
+
+       <h2 class="mt-3">New book</h2>
+        <%= form_with model:book, local:true do |f| %>
+         <div class="form-group">
+            <p>Title</p>
+             <%= f.text_field :title, class: "form-control book_title" %>
+         </div>
+         <div class="form-group">
+            <p>Opinion</p>
+             <%= f.text_area :body, class: "form-control book_body" %>
+         </div>
+            <div class="form-group">
+              <div><%= f.submit 'Create Book', class: "btn btn-success" %></div>
             </div>
-<% end %>
-</tbody>
-
-   <h2>New book</h2>
-   <%= form_with model:book, local:true do |f| %>
-    <p>Title</p>
-     <%= f.text_field :title %>
-    <p>Opinion</p>
-     <%= f.text_area :body %>
-     <div><%= f.submit 'Create Book' %></div>
-   <% end %>
+        <% end %>
