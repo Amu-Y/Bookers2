@@ -1,7 +1,8 @@
+<div class="col-md-3">
   <h2>User info</h2>
-        <div class="attachment user profile_image fallback">
-          <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
-        </div>
+    <div class="attachment user profile_image fallback">
+      <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+    </div>
     <table class="table">
       <tbody>
         <tr>
@@ -36,3 +37,4 @@
               <div><%= f.submit 'Create Book', class: "btn btn-success" %></div>
             </div>
         <% end %>
+</div>

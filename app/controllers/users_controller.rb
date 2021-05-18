@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
  def create
+   redirect_to user_path(@user.id)
  end
 
   def show
