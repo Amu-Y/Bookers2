@@ -1,4 +1,3 @@
-<div class="col-md-3">
   <h2>User info</h2>
     <div class="attachment user profile_image fallback">
       <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
@@ -15,11 +14,10 @@
         </tr>
       </tbody>
     </table>
-        <div class="row">
-          <p class="btn btn-outline-secondary btn-block">
+        <div>
           <%= link_to edit_user_path(user) do  %>
-            <i class="fas fa-user-cog text-secondary"></i>
-          <% end %></p>
+            <i class="btn btn-outline-secondary btn-block fas fa-user-cog text-secondary"></i>
+          <% end %>
         </div>
 
 
@@ -37,4 +35,3 @@
               <div><%= f.submit 'Create Book', class: "btn btn-success" %></div>
             </div>
         <% end %>
-</div>
