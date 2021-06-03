@@ -31,7 +31,14 @@ class UsersController < ApplicationController
     else
     render :edit
     end
+  end
 
+  def follower
+    @user = current_user
+  end
+
+  def followed
+    @user = current_user
   end
 
 
