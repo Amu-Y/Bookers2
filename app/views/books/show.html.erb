@@ -28,11 +28,11 @@
           </tr>
       </table>
 
-      <%= render "books/comments", book: @book %>
+      <div id="comments"><%= render "book_comments/comments", book: @book, user: @user %></div>
 
       <div class="new-comment">
-      <%= form_with(model:[@book, @book_comment], local: true) do |f| %>
-        <div><%= f.text_area :comment, rows:'5' %></div>
+      <%= form_with(model:[@book, @book_comment]) do |f| %>
+        <div ><%= f.text_area :comment, rows:'5', id: "comment" %></div>
         <div><%= f.submit "送信する" %></div>
       <% end %>
       </div>
