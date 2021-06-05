@@ -17,6 +17,7 @@ class BooksController < ApplicationController
     @book = Book.new
     @books = Book.all
     @user = current_user
+    @all_ranks  = Book.all.sort {|a,b| b.favorites.count <=> a.favorites.count}
   end
 
   def show
