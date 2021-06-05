@@ -17,7 +17,9 @@ class BooksController < ApplicationController
     @book = Book.new
     @books = Book.all
     @user = current_user
-    @all_ranks  = Book.all.sort {|a,b| b.favorites.count <=> a.favorites.count}
+    to  = Time.current.at_end_of_day
+    from  = (to - 6.day).at_beginning_of_day
+    @all_ranks  = Book.all.sort {|a,b| b.favorites.where(created_at: from...to).count <=> a.favorites.where(created_at: from...to).count}
   end
 
   def show
